@@ -1,0 +1,42 @@
+{
+  "name": "coffe_day",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TP_Final",
+  "scripts": {
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node --no-warnings src/app.js"
+  },
+  "keywords": [
+    "mongodb",
+    "mongoose",
+    "coffee_day"
+  ],
+  "author": "@Nicolas_Saavedra",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
+    "formidable": "^2.0.1",
+    "jimp": "^0.16.2",
+    "mongodb": "^3.5.8",
+    "mongoose": "^5.9.17",
+    "morgan": "^1.10.0",
+    "nanoid": "^4.0.0",
+    "nodemailer": "^6.8.0",
+    "passport": "^0.6.0",
+    "passport.socket.io": "^0.0.0",
+    "socket.io": "^4.5.4",
+    "uuid": "^9.0.0",
+    "ws": "^8.11.0"
+  }
+}

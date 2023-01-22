@@ -1,0 +1,23 @@
+<h1 class="my-3 text-center">𝑂𝑟𝑑𝑒𝑛𝑒𝑠 📋</h1>
+<a class="btn btn-dark d-flex justify-content-center" href="/orderAdd" role="button">Agregar una Orden</a>
+<p class="my-2">⚙ <b>𝐿𝑖𝑠𝑡𝑎 𝑑𝑒 𝑂𝑟𝑑𝑒𝑛𝑒𝑠:</b></p>
+{{#each foundItems}}
+  <article class="card my-2">
+    <div class="card-body">
+      <p>Fecha: {{this.date}}</p>
+      <p>Mesa: {{this.location}}</p>
+      <p>Modo de Pago: {{this.paidIn}}</p>
+      <div class="container"><article class="card my-2">
+    <div class="card-body">
+        <p><b>Productos:</b></p>
+        {{#each this.products}}
+                <p>Nombre del Producto: {{this.name}}</p>
+                <p>Cantidad de Productos: {{this.amount}}</p>
+                <p>Precio del Producto: ${{this.unitPrice}}</p>
+        {{/each}}  
+    </div></div>
+      <p>Total (con IVA): ${{this.total}}</p>
+      <a href="/orders/delete/{{this._id}}" class="btn btn-danger">Pagado</a>
+    </div>
+  </article>
+{{/each}}

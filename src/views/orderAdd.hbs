@@ -1,0 +1,71 @@
+<h1 class="my-1 text-center">𝐴𝑛̃𝑎𝑑𝑖𝑟 𝑂𝑟𝑑𝑒𝑛:</h1>
+  {{#each foundItems}}
+  <article id="availableEach">
+    <h4 class="card-title my-3">⚙ 𝑃𝑟𝑜𝑑𝑢𝑐𝑡𝑜𝑠 𝐷𝑖𝑝𝑜𝑛𝑖𝑏𝑙𝑒𝑠:</h4>
+    <p class="card-text"><b>𝑁𝑜𝑚𝑏𝑟𝑒:</b> {{this.name}} - <b>𝑀𝑎𝑟𝑐𝑎:</b> {{this.brand}}</p>
+    <p class="card-text"><b>𝐷𝑖𝑠𝑝𝑜𝑛𝑖𝑏𝑙𝑒𝑠:</b> {{this.available}} - <b>𝑃𝑟𝑒𝑐𝑖𝑜 𝑥 𝑈𝑛𝑖𝑑𝑎𝑑:</b> ${{this.unitPrice}}</p>
+    <p class="card-text"><b>ID:</b> {{this._id}} (𝑐𝑜𝑝𝑖𝑎𝑟 𝑦 𝑝𝑒𝑔𝑎𝑟 𝐼𝐷 𝑒𝑛 𝑒𝑙 𝑓𝑜𝑟𝑚𝑢𝑙𝑎𝑟𝑖𝑜 𝑑𝑒 𝑎𝑏𝑎𝑗𝑜 𝑝𝑎𝑟𝑎 𝑐𝑟𝑒𝑎𝑟 𝑢𝑛𝑎 𝑜𝑟𝑑𝑒𝑛)</p>
+  </article>
+  {{/each}}
+<form action="/orders/" method="POST" id="addOrderForm">
+  <p class="my-2">⚙ <b>𝐴𝑔𝑟𝑒𝑔𝑎𝑟 𝑛𝑢𝑒𝑣𝑎 𝑂𝑟𝑑𝑒𝑛</b></p>
+  <input
+    type="text"
+    placeholder="Fecha AAAA/MM/DD"
+    class="form-control my-2"
+    name="date"
+    required
+  />
+  <input
+    type="text"
+    placeholder="Mesa"
+    class="form-control my-2"
+    name="location"
+    required
+  />
+  <select
+    class="form-select"
+    aria-label="Default select example"
+    name="paidIn"
+    required
+  >
+    <option>Seleccione un metodo de pago</option>
+    <option value="Efectivo">Efectivo</option>
+    <option value="Tarjeta">Tarjeta</option>
+  </select>
+  <input
+    type="text"
+    placeholder="Id del producto"
+    class="form-control my-2"
+    name="products[][_id]"
+    required
+  />
+  <input
+    type="text"
+    placeholder="Nombre del producto"
+    class="form-control my-2"
+    name="products[][name]"
+    required
+  />
+  <input
+    type="number"
+    placeholder="Ingrese una Cantidad"
+    class="form-control my-2"
+    name="products[][amount]"
+    required
+  />
+  <input
+    type="text"
+    placeholder="Precio Unitario $$"
+    class="form-control my-2"
+    name="products[][unitPrice]"
+    required
+  />
+  <button class="btn btn-success mb-2 w-100" type="submit">+ Crear Orden</button>
+</form>
+<script>
+  var addOrderForm = document.getElementById("addOrderForm")
+      addOrderForm.addEventListener("submit",(e)=>{
+      socket.emit('UpdateOnDatabase');
+      })
+</script>

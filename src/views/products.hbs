@@ -1,0 +1,76 @@
+<h1 class="my-3 text-center">𝑃𝑟𝑜𝑑𝑢𝑐𝑡𝑜𝑠 ☕</h1>
+<form action="/products" method="post" id="addProductForm">
+  <p class="my-2">⚙ 𝐴𝑔𝑟𝑒𝑔𝑎𝑟 𝑃𝑟𝑜𝑑𝑢𝑐𝑡𝑜:</p>
+  <input
+    type="text"
+    placeholder="Nombre del Producto"
+    class="form-control my-2"
+    name="name"
+    required
+  />
+  <input
+    type="text"
+    placeholder="Marca del Producto"
+    class="form-control my-2"
+    name="brand"
+    required
+  />
+  <input
+    type="text"
+    placeholder="Precio"
+    class="form-control my-2"
+    name="unitPrice"
+    required
+  />
+  <input
+    type="text"
+    placeholder="Distribuidor"
+    class="form-control my-2"
+    name="supplierName"
+    required
+  />
+  <input
+    type="text"
+    placeholder="Disponibles"
+    class="form-control my-2"
+    name="available"
+    required
+  />
+  <select
+    class="form-select"
+    aria-label="Default select example"
+    name="categories"
+    required
+  >
+    <option>Seleccione una categoría</option>
+    <option value="coffee">Café</option>
+    <option value="food">Comida</option>
+    <option value="drinks">Bebidas</option>
+    <option value="infusion">Infusiones</option>
+  </select>
+  <button class="btn btn-dark mb-2 w-100" type="submit">Agregar Producto</button>
+</form>
+<p class="my-2">⚙ 𝐿𝑖𝑠𝑡𝑎 𝑑𝑒 𝑃𝑟𝑜𝑑𝑢𝑐𝑡𝑜𝑠 𝐷𝑖𝑠𝑝𝑜𝑛𝑖𝑏𝑙𝑒𝑠:</p>
+{{#each foundItems}}
+  <article class="card my-2">
+    <div class="card-body">
+      <p><b>Nombre:</b> {{this.name}}</p>
+      <p><b>Marca:</b> {{this.brand}}</p>
+      <p><b>Precio:</b> {{this.unitPrice}}</p>
+      <p><b>Distribuidor:</b> {{this.supplierName}}</p>
+      <p><b>Disponibles:</b> {{this.available}}</p>
+      <p><b>Categoría:</b> {{this.categories}}</p>
+      <a href="/products/delete/{{this._id}}" class="btn btn-danger" onclick="deleteProductBtn()">Eliminar</a>
+    </div>
+  </article>
+{{/each}}
+<script>
+  var addProductForm = document.getElementById("addProductForm")
+      addProductForm.addEventListener("submit",(e)=>{
+      socket.emit('UpdateOnDatabase');
+  })
+  function deleteProductBtn(){
+    socket.emit('UpdateOnDatabase');
+  }
+  
+</script>
